@@ -26,6 +26,7 @@ async function isProductAvailable () {
 
 type TwitterUser = {
   id: number,
+  id_str: string,
   name: string,
   screen_name: string
 }
@@ -33,6 +34,7 @@ type TwitterUser = {
 type Tweet = {
   created_at: string,
   id: number,
+  id_str: string,
   text: string,
   in_reply_to_user_id: Number,
   in_reply_to_screen_name: string,
@@ -53,7 +55,7 @@ function replyTweet (tweet: Tweet) {
   const randomReply = replies[randomIndex]
   twit.post('statuses/update', {
     status: `@${tweet.user.screen_name} ${randomReply}`,
-    in_reply_to_status_id: tweet.id
+    in_reply_to_status_id: tweet.id_str
   })
 }
 
