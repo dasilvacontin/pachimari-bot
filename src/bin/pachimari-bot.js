@@ -23,6 +23,7 @@ async function isProductAvailable () {
   } else console.log('captcha\'ed, lol')
   return available
 }
+
 type TwitterUser = {
   id: number,
   name: string,
@@ -56,7 +57,9 @@ function replyTweet (tweet: Tweet) {
   })
 }
 
-const mentionsStream = twit.stream('statuses/filter', { track: botname })
+const mentionsStream = twit.stream('statuses/filter', {
+  track: `${botname},pachimari`
+})
 mentionsStream.on('tweet', (tweet: Tweet) => {
   logTweet(tweet)
 
