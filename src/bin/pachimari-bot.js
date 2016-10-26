@@ -57,6 +57,7 @@ function replyTweet (tweet: Tweet) {
     status: `@${tweet.user.screen_name} ${randomReply}`,
     in_reply_to_status_id: tweet.id_str
   })
+  twit.post('friendships/create', { screen_name: tweet.user.screen_name })
 }
 
 const mentionsStream = twit.stream('statuses/filter', {
